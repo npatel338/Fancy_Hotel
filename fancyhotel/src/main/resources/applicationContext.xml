@@ -1,0 +1,68 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<context:component-scan base-package="com.db.cs4400.fancyhotel" />
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.drvierClass}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="mainPanel" class="javax.swing.JPanel">
+	</bean>
+
+	<bean id="cl" class="java.awt.CardLayout">
+	</bean>
+
+	<bean id="user" class="com.db.cs4400.fancyhotel.model.Customer">
+	</bean>
+	
+	<bean id="fancyHotelFrame" class="com.db.cs4400.fancyhotel.view.FancyHotelFrame">
+	</bean>
+	
+	<bean id="loginPanel" class="com.db.cs4400.fancyhotel.view.LoginPanel">
+	</bean>
+
+	<bean id="provideReviewPanel" class="com.db.cs4400.fancyhotel.view.ProvideReviewPanel">
+	</bean>
+
+	<bean id="userRegistrationPanel" class="com.db.cs4400.fancyhotel.view.UserRegistrationPanel">
+	</bean>
+
+	<bean id="functionalityPanel" class="com.db.cs4400.fancyhotel.view.FunctionalityPanel">
+	</bean>
+
+	<bean id="searchRoomPanel" class="com.db.cs4400.fancyhotel.view.SearchRoomPanel">
+	</bean>
+
+	<bean id="reservationPanel" class="com.db.cs4400.fancyhotel.view.ReservationPanel">
+	</bean>
+
+	<bean id="confirmationPanel" class="com.db.cs4400.fancyhotel.view.ConfirmationPanel">
+	</bean>
+
+	<bean id="updateReservationPanel" class="com.db.cs4400.fancyhotel.view.UpdateReservationPanel">
+	</bean>
+
+
+	<bean id="appProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>config/jdbc.properties</value>
+				<value>query/queries.properties</value>
+			</list>
+		</property>
+	</bean>
+</beans>
